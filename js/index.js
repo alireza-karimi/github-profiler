@@ -9,7 +9,7 @@ const locationData = document.querySelector('#address_data')
 const avatarData = document.querySelector('#avatar_data')
 const errorData = document.querySelector('#error_data')
 
-
+// getting Github profile using API
 async function getGithubProfile(e) {
     // cancel submit event
     e.preventDefault(); 
@@ -49,7 +49,7 @@ async function getGithubProfile(e) {
     }
 }
 
-
+// clearing current shown data in profile section
 function clearProfileData() {
     bioData.innerHTML = "<span>Bio</spane>";
     fullNameData.innerHTML = "<span>Name</spane>";
@@ -59,6 +59,7 @@ function clearProfileData() {
     errorData.style.display = "none";
 }
 
+// setting profile data in profile section
 function setProfileData(obj) {
 
     // setting bio
@@ -105,6 +106,7 @@ function setProfileData(obj) {
 
 }
 
+// saving profile in local storage
 async function saveProfileInLocalStorage(userId, obj) {
     try {
         window.localStorage.setItem(userId, JSON.stringify(obj));
@@ -114,6 +116,7 @@ async function saveProfileInLocalStorage(userId, obj) {
     
 }
 
+// checking format of input userId. if the length is zero, it returns false
 function checkFormat(userId) {
     if(userId.length < 1){
         return false

@@ -1,11 +1,16 @@
 
-
+/*
+adding background to body
+*/
 body {
     background-image: url("../images/background.png");
     background-size: cover; /* used to cover the screen */
     background-attachment: fixed; /* background does not scroll with rest of the page */
 }
 
+/*
+making the main container in the middle and setting visual identity
+*/
 .main_container {
 
     position: absolute;
@@ -28,19 +33,28 @@ body {
     
 }
 
+/*
+Setting visual identity for fieldset legend
+*/
 .legend {
     color: #cb8b00;
     font-weight: 500;
     font-size: 30px;
 }
 
+/* 
+making left and right containers (profile section) 50% of the parent size 
+*/
 .profile_container {
-    width: 60%; /* making left and right containers 50% of the parent size */
+    width: 60%; 
     margin: 10px;
 }
 
+/* 
+making the two profile_details_container beside each other 
+*/
 .profile_detail_container {
-    display: inline-block; /* making the two profile_details_container beside each other */
+    display: inline-block; 
     width: 210px;
 }
 
