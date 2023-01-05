@@ -8,6 +8,7 @@ const blogData = document.querySelector('#blog_data')
 const locationData = document.querySelector('#address_data')
 const avatarData = document.querySelector('#avatar_data')
 const errorData = document.querySelector('#error_data')
+const favoriteData = document.querySelector('#favorite_language_data')
 
 // getting Github profile using API
 async function getGithubProfile(e) {
@@ -24,7 +25,8 @@ async function getGithubProfile(e) {
             // checking local storage to see if profile is available
             let data = JSON.parse(window.localStorage.getItem(userId));
             if (data != null) { // profile available in local storage
-                setProfileData(data);
+                let favoriteLanguage = await detectFavoriteLanguage(userId)
+                setProfileData(data, favoriteLanguage);
             } else { // profile not available in local storage
                 let response = await fetch(`https://api.github.com/users/${userId}`);
                 let obj = await response.json();
@@ -37,8 +39,9 @@ async function getGithubProfile(e) {
                     } 
                     return                 
                 }
+                let favoriteLanguage = await detectFavoriteLanguage(userId)
                 saveProfileInLocalStorage(userId, obj)
-                setProfileData(obj);
+                setProfileData(obj, favoriteLanguage);
             }
 
         } catch (e) {
@@ -49,6 +52,41 @@ async function getGithubProfile(e) {
     }
 }
 
+// detecting favorite language of a user
+async function detectFavoriteLanguage(userId) {
+
+    try{
+        let response = await fetch(`https://api.github.com/users/${userId}/repos`);
+                let objs = await response.json();
+                if (response.status != 200) {
+                    if(response.status == 404){
+                        showError("Profile not available!"); // showing error when profile is not avialble
+                    }
+                    else{
+                        showError(`Request failed with error ${response.status}`); // showing errors other than 404
+                    } 
+                    return        
+                }
+
+                // counting occurance of language in repos
+                var countObj = objs.reduce((a, obj)=>{
+                    a[obj.language] =  (a[obj.language] || 0 ) + 1;
+                    return a
+                 },{});
+
+                // getting the most frequent language
+                var favorite = Object.keys(countObj)
+                  .sort((a,b) => countObj[b] - countObj[a] )
+                  .slice(0,1)
+
+                console.log(favorite[0])
+                return favorite[0]
+                
+    } catch (e) {
+        showError("Error getting repos!"); // showing error when we cannot perform the API request
+    }
+}
+
 // clearing current shown data in profile section
 function clearProfileData() {
     bioData.innerHTML = "<span>Bio</spane>";
@@ -56,12 +94,13 @@ function clearProfileData() {
     blogData.innerHTML = "<span>Blog</spane>";
     locationData.innerHTML = "<span>Location</spane>";
     avatarData.setAttribute("src", "././images/icon.png");
+    favoriteData.innerHTML = "<span>Favorite Language</spane>";
     errorData.style.display = "none";
 }
 
 // setting profile data in profile section
-function setProfileData(obj) {
-
+function setProfileData(obj, favoriteLanguage) {
+    console.log(favoriteLanguage)
     // setting bio
     if (obj.bio != null) {
         bioData.innerHTML = "<span>" + obj.bio + "</span>";
@@ -102,6 +141,13 @@ function setProfileData(obj) {
         avatarData.setAttribute("src", obj.avatar_url);
     } else {
         avatarData.setAttribute("src", "././images/icon.png");
+    }
+
+    // setting favorite language
+    if (favoriteLanguage != null && favoriteLanguage != '' && favoriteLanguage != 'null'){
+        favoriteData.innerHTML = "<span>Favorite Language: " + favoriteLanguage + "</span>";
+    } else {
+        favoriteData.innerHTML = "<span>No Favorite Language</spane>";
     }
 
 }
