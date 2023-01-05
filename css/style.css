@@ -1,0 +1,45 @@
+
+
+body {
+    background-image: url("../images/background.png");
+    background-size: cover; /* used to cover the screen */
+    background-attachment: fixed; /* background does not scroll with rest of the page */
+}
+
+.main_container {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+
+    min-width: 50%; /* setting a min-width for the main_container */
+    min-height: 60%; /* setting a min-height for the main_container */
+    background-color: white;
+    padding: 10px; /* making a small distance between main_container and left and right sub containers */
+    border-radius: 10px; /* creating a curved like borders */
+    
+}
+
+.legend {
+    color: #cb8b00;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.container {
+    width: 50%; /* making left and right containers 50% of the parent size */
+    margin: 10px;
+}
+
+
+.fieldset {
+    padding: 10px;
+    border-radius: 10px;
+}
