@@ -14,11 +14,16 @@
         <div class="profile_container container">
             <fieldset>
                 <legend class="legend">Profile Data</legend>
-                <img src="./images/icon.png" width="100">
-                <div class="bio_data">bio_data</div>
-                <div class="full_name_data">full_name_data</div>
-                <div class="blog_data">blog_data</div>
-                <div class="address_data">address_data</div>
+                <div>
+                    <img src="./images/icon.png" width="100" id="avatar_data">
+                    <div class="bio_data" id="bio_data">bio_data</div>
+                </div>
+                <div>
+                    <div class="full_name_data" id="full_name_data">full_name_data</div>
+                    <div class="blog_data" id="blog_data">blog_data</div>
+                    <div class="address_data" id="address_data">address_data</div>
+                    <div class="error_data" id="error_data">error_data</div>
+                </div>     
             </fieldset>
         </div>
         <!-- right container -->
@@ -28,9 +33,9 @@
                 <form>
                     <label>Username</label>
                     <br>
-                    <input type="text">
+                    <input type="text" id="userId_input">
                     <br><br/>
-                    <button>Submit</button>
+                    <button id="submit_button">Submit</button>
                 </form>
             </fieldset>     
         </div>    
