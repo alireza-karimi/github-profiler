@@ -14,16 +14,19 @@
         <div class="profile_container container">
             <fieldset>
                 <legend class="legend">Profile Data</legend>
-                <div>
+                <div class="profile_detail_container">
                     <img src="./images/icon.png" width="100" id="avatar_data">
-                    <div class="bio_data" id="bio_data">bio_data</div>
+                    <div class="bio_data" id="bio_data">Bio</div>
                 </div>
-                <div>
-                    <div class="full_name_data" id="full_name_data">full_name_data</div>
-                    <div class="blog_data" id="blog_data">blog_data</div>
-                    <div class="address_data" id="address_data">address_data</div>
-                    <div class="error_data" id="error_data">error_data</div>
-                </div>     
+                <div class="profile_detail_container">
+                    <div class="full_name_data" id="full_name_data">Name</div>
+                    <div>
+                        <a href="" class="blog_data" id="blog_data" target="_blank">Blog</a>
+                    </div>
+                    <div class="address_data" id="address_data">Location</div>
+                </div> 
+                <!-- Error Field -->    
+                <div class="error_data" id="error_data">error_data</div>
             </fieldset>
         </div>
         <!-- right container -->
@@ -33,12 +36,12 @@
                 <form>
                     <label>Username</label>
                     <br>
-                    <input type="text" id="userId_input">
+                    <input type="text" class="userId_input" id="userId_input">
                     <br><br/>
-                    <button id="submit_button">Submit</button>
+                    <button class="submit_button" id="submit_button">Submit</button>
                 </form>
             </fieldset>     
-        </div>    
+        </div> 
     </div>
     <script src="./js/index.js"></script>
 </body>

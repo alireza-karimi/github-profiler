@@ -54,7 +54,7 @@ function clearProfileData() {
     bioData.innerHTML = "<span>Bio</spane>";
     fullNameData.innerHTML = "<span>Name</spane>";
     blogData.innerHTML = "<span>Blog</spane>";
-    locationData.innerHTML = "<span>Address</spane>";
+    locationData.innerHTML = "<span>Location</spane>";
     avatarData.setAttribute("src", "././images/icon.png");
     errorData.style.display = "none";
 }
@@ -78,6 +78,13 @@ function setProfileData(obj) {
     // setting blog data
     if (obj.blog != null) {
         blogData.innerHTML = "<span>" + obj.blog + "</span>";
+        if(obj.blog.startsWith("http")){
+            blogData.setAttribute("href", obj.blog)
+        }
+        else{
+            blogData.setAttribute("href", "https://" + obj.blog)
+        }
+        
     } else {
         blogData.innerHTML = "<span>No Blog</spane>";
     }

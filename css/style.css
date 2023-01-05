@@ -34,17 +34,53 @@ body {
     font-size: 30px;
 }
 
-.container {
-    width: 50%; /* making left and right containers 50% of the parent size */
+.profile_container {
+    width: 60%; /* making left and right containers 50% of the parent size */
     margin: 10px;
 }
 
+.profile_detail_container {
+    display: inline-block; /* making the two profile_details_container beside each other */
+    width: 210px;
+}
 
+/*
+setting padding and radious of fieldset
+*/
 .fieldset {
     padding: 10px;
     border-radius: 10px;
 }
 
+/*
+we want to make error_data invisible by default
+crating a distance from top and and making the error message in the middle
+*/
 .error_data {
     display: none;
+    margin-top: 20px;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+/*
+setting width, height, color and radious of submit_button
+*/
+.submit_button {
+    width: 190px;
+    height: 30px;
+    text-align: center;
+    background-color: #cb8b00;
+    border-color: #cb8b00;
+    color: white;
+    border-radius: 5px;
+}
+
+/*
+setting width, height and radious of input
+*/
+.userId_input {
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
 }
